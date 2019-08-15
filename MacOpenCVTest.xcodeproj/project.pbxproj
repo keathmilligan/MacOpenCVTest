@@ -11,6 +11,7 @@
 		02D645081FF6DD94004BF415 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D645071FF6DD94004BF415 /* ViewController.swift */; };
 		02D6450A1FF6DD94004BF415 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02D645091FF6DD94004BF415 /* Assets.xcassets */; };
 		02D6450D1FF6DD94004BF415 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02D6450B1FF6DD94004BF415 /* Main.storyboard */; };
+		02D645181FF6DFB6004BF415 /* OpenCVWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 02D645171FF6DFB6004BF415 /* OpenCVWrapper.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,9 @@
 		02D6450C1FF6DD94004BF415 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		02D6450E1FF6DD95004BF415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02D6450F1FF6DD95004BF415 /* MacOpenCVTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacOpenCVTest.entitlements; sourceTree = "<group>"; };
+		02D645151FF6DFB6004BF415 /* MacOpenCVTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MacOpenCVTest-Bridging-Header.h"; sourceTree = "<group>"; };
+		02D645161FF6DFB6004BF415 /* OpenCVWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCVWrapper.h; sourceTree = "<group>"; };
+		02D645171FF6DFB6004BF415 /* OpenCVWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCVWrapper.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,8 +41,11 @@
 		02D644F91FF6DD94004BF415 = {
 			isa = PBXGroup;
 			children = (
+				02D645161FF6DFB6004BF415 /* OpenCVWrapper.h */,
+				02D645171FF6DFB6004BF415 /* OpenCVWrapper.mm */,
 				02D645041FF6DD94004BF415 /* MacOpenCVTest */,
 				02D645031FF6DD94004BF415 /* Products */,
+				02D645151FF6DFB6004BF415 /* MacOpenCVTest-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,6 +102,7 @@
 				TargetAttributes = {
 					02D645011FF6DD94004BF415 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -136,6 +144,7 @@
 			files = (
 				02D645081FF6DD94004BF415 /* ViewController.swift in Sources */,
 				02D645061FF6DD94004BF415 /* AppDelegate.swift in Sources */,
+				02D645181FF6DFB6004BF415 /* OpenCVWrapper.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,14 +272,25 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MacOpenCVTest/MacOpenCVTest.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = WMYVSJCH96;
+				HEADER_SEARCH_PATHS = /usr/local/Cellar/opencv/3.4.0/include;
 				INFOPLIST_FILE = MacOpenCVTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/opencv/3.4.0/lib;
+				OTHER_LDFLAGS = (
+					"-lopencv_core",
+					"-lopencv_imgproc",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.keathmilligan.MacOpenCVTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "MacOpenCVTest-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -279,14 +299,24 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MacOpenCVTest/MacOpenCVTest.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = WMYVSJCH96;
+				HEADER_SEARCH_PATHS = /usr/local/Cellar/opencv/3.4.0/include;
 				INFOPLIST_FILE = MacOpenCVTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/opencv/3.4.0/lib;
+				OTHER_LDFLAGS = (
+					"-lopencv_core",
+					"-lopencv_imgproc",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.keathmilligan.MacOpenCVTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "MacOpenCVTest-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
